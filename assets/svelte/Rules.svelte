@@ -1,8 +1,9 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
     import type { Live } from "./types/live";
-    import { test } from "./lib/test";
-    import { cn } from "./lib/utils";
+    import { test } from "$lib/utils/test";
+    import { cn } from "$lib/utils";
+    import { Button } from "$lib/components/ui/button";
 
     const myTest = test("testitest");
     console.log(myTest);
@@ -17,7 +18,9 @@
 </script>
 
 <section>
-    <button onclick={() => (visible = !visible)}>Toggle</button>
+    <Button variant="outline" onclick={() => (visible = !visible)}
+        >Button</Button
+    >
     {#if visible}
         <div in:fly={{ y: 50, duration: 300 }}>{emojis}</div>
     {/if}
