@@ -21,7 +21,7 @@
         <div in:fly={{ y: 50, duration: 300 }}>{emojis}</div>
     {/if}
     <div>
-        <h1 class="text-green-500">Rules</h1>
+        <h1 class="text-green-500 text-2xl">Rules</h1>
         <p>Here are the rules:</p>
         <ul>
             <li>Rule 1</li>
