@@ -1,6 +1,10 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
     import type { Live } from "./types/live";
+    import { test } from "./utils/test";
+
+    const myTest = test("testitest");
+    console.log(myTest);
 
     type Props = {
         emojis: string;

@@ -10,6 +10,5 @@
                 "svelte/*"
             ]
         },
-        "verbatimModuleSyntax": true
     }
 }
