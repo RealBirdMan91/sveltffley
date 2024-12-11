@@ -20,7 +20,7 @@ let optsClient = {
     bundle: true,
     minify: deploy,
     conditions: clientConditions,
-    alias: {svelte: "svelte"},
+    alias: { svelte: "svelte" },
     outdir: "../priv/static/assets",
     logLevel: "info",
     sourcemap: watch ? "inline" : false,
@@ -29,7 +29,7 @@ let optsClient = {
         importGlobPlugin(),
         sveltePlugin({
             preprocess: sveltePreprocess(),
-            compilerOptions: {dev: !deploy, css: "injected", generate: "client"},
+            compilerOptions: { dev: !deploy, css: "injected", generate: "client" },
         }),
     ],
 }
@@ -41,7 +41,7 @@ let optsServer = {
     minify: false,
     target: "node19.6.1",
     conditions: serverConditions,
-    alias: {svelte: "svelte"},
+    alias: { svelte: "svelte" },
     outdir: "../priv/svelte",
     logLevel: "info",
     sourcemap: watch ? "inline" : false,
@@ -50,7 +50,7 @@ let optsServer = {
         importGlobPlugin(),
         sveltePlugin({
             preprocess: sveltePreprocess(),
-            compilerOptions: {dev: !deploy, css: "injected", generate: "server"},
+            compilerOptions: { dev: !deploy, css: "injected", generate: "server" },
         }),
     ],
 }

@@ -1,8 +1,5 @@
 {
     "compilerOptions": {
-        "types": [
-            "node"
-        ],
         "strict": true,
         "baseUrl": ".",
         "paths": {
@@ -14,10 +11,7 @@
             ]
         },
         "verbatimModuleSyntax": true,
-        "module": "nodenext",
-        "target": "ESNext",
-        "moduleResolution": "NodeNext",
-        "esModuleInterop": true,
-        "skipLibCheck": true
+        "module": "esnext",
+        "moduleResolution": "node",
     }
 }

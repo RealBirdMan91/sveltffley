@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "devDependencies": {
     "@types/node": "^22.10.1",
     "esbuild": "^0.24.0",
