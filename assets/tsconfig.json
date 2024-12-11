@@ -1,5 +1,8 @@
 {
     "compilerOptions": {
+        "types": [
+            "node"
+        ],
         "strict": true,
         "baseUrl": ".",
         "paths": {
@@ -10,5 +13,11 @@
                 "svelte/*"
             ]
         },
+        "verbatimModuleSyntax": true,
+        "module": "nodenext",
+        "target": "ESNext",
+        "moduleResolution": "NodeNext",
+        "esModuleInterop": true,
+        "skipLibCheck": true
     }
 }
