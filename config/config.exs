@@ -31,8 +31,6 @@ config :sveltffley, SveltffleyWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :sveltffley, Sveltffley.Mailer, adapter: Swoosh.Adapters.Local
 
-
-
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
