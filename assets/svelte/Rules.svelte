@@ -1,38 +1,27 @@
 <script lang="ts">
-    import { fly } from "svelte/transition";
-    import type { Live } from "./types/live";
-    import { test } from "$lib/utils/test";
-    import { cn } from "$lib/utils";
-    import { Button } from "$lib/components/ui/button";
-
-    const myTest = test("testitest");
-    console.log(myTest);
+    import type { Rule } from "$lib/types";
+    import * as Accordion from "$lib/components/ui/accordion";
+    import type { Live } from "live_svelte";
 
     type Props = {
         emojis: string;
         live: Live;
+        rules: Rule[];
     };
 
-    let { emojis }: Props = $props();
-    let visible = $state(false);
+    let { emojis, rules }: Props = $props();
+    console.log(emojis, rules);
 </script>
 
-<section>
-    <Button variant="outline" onclick={() => (visible = !visible)}
-        >Button</Button
-    >
-    {#if visible}
-        <div in:fly={{ y: 50, duration: 300 }}>{emojis}</div>
-    {/if}
-    <div>
-        <h1 class={cn(visible ? "text-green-500" : "text-red-500", "text-2xl")}>
-            Rules
-        </h1>
-        <p>Here are the rules:</p>
-        <ul>
-            <li>Rule 1</li>
-            <li>Rule 2</li>
-            <li>Rule 3</li>
-        </ul>
-    </div>
+<section class="flex flex-col gap-6">
+    <h1 class="text-4xl font-semibold text-neutral-800">The Rules</h1>
+    <p class="text-xl">{emojis}</p>
+    <Accordion.Root>
+        {#each rules as rule}
+            <Accordion.Item value={`item-${rule.id}`} class="text-neutral-600">
+                <Accordion.Trigger>{rule.title}</Accordion.Trigger>
+                <Accordion.Content>{rule.text}</Accordion.Content>
+            </Accordion.Item>
+        {/each}
+    </Accordion.Root>
 </section>

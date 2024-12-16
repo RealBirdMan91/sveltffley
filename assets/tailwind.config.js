@@ -10,7 +10,9 @@ module.exports = {
     "./js/**/*.js",
     "../lib/sveltffley_web.ex",
     "../lib/sveltffley_web/**/*.*ex",
-    "./svelte/**/*.svelte"
+    "./svelte/**/*.svelte",
+    "./svelte/**/*.js",
+    "./svelte/**/*.ts"
   ],
   theme: {
     container: {
