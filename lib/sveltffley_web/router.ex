@@ -20,6 +20,9 @@ defmodule SveltffleyWeb.Router do
     get "/", PageController, :home
     live "/rules", LiveRules
     live "/estimator", LiveEstimator
+
+    live "/raffles", LiveRaffle.Index
+    live "/raffles/:id", LiveRaffle.Show
   end
 
   # Other scopes may use custom stacks.

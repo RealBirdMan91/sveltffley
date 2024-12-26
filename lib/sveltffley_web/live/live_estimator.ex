@@ -20,4 +20,9 @@ defmodule SveltffleyWeb.LiveEstimator do
   def handle_event("substract", %{"price" => price}, socket) do
     {:noreply, update(socket, :tickets, &(&1 - price))}
   end
+
+  def handle_event("set-price", %{"price" => price}, socket) do
+    IO.inspect(price)
+    {:noreply, assign(socket, price: String.to_integer(price))}
+  end
 end

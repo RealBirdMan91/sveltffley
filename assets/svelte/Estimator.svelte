@@ -1,5 +1,7 @@
 <script lang="ts">
     import type { Live } from "live_svelte";
+    import { Input } from "$lib/components/ui/input/index.js";
+    import { Label } from "$lib/components/ui/label/index.js";
     import Button from "./components/ui/button/button.svelte";
     import { EstimatorSchema, type Estimator } from "./schemas/Estimator";
     import { createForm } from "$lib/store/createForm.svelte";
@@ -26,7 +28,7 @@
     });
 
     function onSubmit(value: Estimator) {
-        console.log("onSubmitValue", value);
+        live.pushEvent("set-price", { price: value.ticketPrice }, () => {});
     }
 </script>
 
@@ -54,18 +56,21 @@
             onsubmit={handleSubmit(onSubmit)}
         >
             <div>
-                <label for="ticketPrice">Ticket Price</label>
-                <input
-                    type="text"
-                    id="ticketPrice"
-                    {...register("ticketPrice")}
-                />
-                <p class="text-red-500">
-                    {formState.errors.ticketPrice?.message}
-                </p>
+                <div class="flex w-full max-w-sm flex-col gap-1.5">
+                    <Label for="ticketPrice">Ticket Price</Label>
+                    <Input
+                        type="number"
+                        id="ticketPrice"
+                        {...register("ticketPrice")}
+                        placeholder="Ticket Price"
+                    />
+                    <p class="text-red-500">
+                        {formState.errors.ticketPrice?.message}
+                    </p>
+                </div>
             </div>
 
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
         </form>
     </section>
 </div>
