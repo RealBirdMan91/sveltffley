@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { type Raffle } from "$lib/types/raffle";
+    import { type Raffle } from "$lib/types_meh/raffle";
     import RaffleCard from "$lib/components/shared/raffle/RaffleCard.svelte";
     let { raffles }: { raffles: Raffle[] } = $props();
 </script>

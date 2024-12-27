@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Rule } from "$lib/types";
+    import type { Rule } from "$lib/types_meh";
     import * as Accordion from "$lib/components/ui/accordion";
     import type { Live } from "live_svelte";
 

@@ -4,11 +4,11 @@ defmodule Sveltffley.Raffles.Raffle do
   @derive {Jason.Encoder, except: [:__meta__]}
 
   schema "raffles" do
-    field :status, Ecto.Enum, values: [:upcoming, :open, :closed]
+    field :status, Ecto.Enum, values: [:upcoming, :open, :closed], default: :upcoming
     field :description, :string
     field :prize, :string
-    field :ticket_price, :integer
-    field :image_path, :string
+    field :ticket_price, :integer, default: 1
+    field :image_path, :string, default: "/images/placeholder.jpg"
 
     timestamps(type: :utc_datetime)
   end

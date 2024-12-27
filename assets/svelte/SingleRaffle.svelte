@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Badge } from "$lib/components/ui/badge";
-  import { type Raffle } from "$lib/types/index";
+  import type { Raffle } from "$lib/types/raffle";
+
   type Props = {
     raffle: Raffle;
     featured_raffles: Raffle[];

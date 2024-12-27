@@ -9,11 +9,6 @@ defmodule Mix.Tasks.Gen.Types do
   """
 
   def run(_args) do
-    # ggf. sicherstellen, dass alles kompiliert ist
-    Mix.Task.run("compile")
-    # oder :application.ensure_all_started/1
-    Mix.Task.run("app.start")
-
     {:ok, modules} = :application.get_key(:sveltffley, :modules)
 
     ecto_modules =

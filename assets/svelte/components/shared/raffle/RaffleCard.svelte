@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { type Raffle } from "$lib/types";
     import * as Card from "$lib/components/ui/card";
     import { Badge } from "$lib/components/ui/badge";
     import { Button } from "$lib/components/ui/button";
     import { cn } from "$lib/utils";
+    import type { Raffle } from "$lib/types/raffle";
 
     let { raffle }: { raffle: Raffle } = $props();
 </script>
