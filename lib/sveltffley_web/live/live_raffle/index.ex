@@ -5,8 +5,25 @@ defmodule SveltffleyWeb.LiveRaffle.Index do
   alias Sveltffley.Raffles
 
   def mount(_params, _session, socket) do
-    socket = assign(socket, :raffles, Raffles.list_raffles())
     {:ok, socket}
+  end
+
+  def handle_params(params, _uri, socket) do
+    IO.inspect(params)
+    socket = assign(socket, :raffles, Raffles.filter_raffles(params))
+    {:noreply, socket}
+  end
+
+  def handle_event("filter", params, socket) do
+    IO.inspect(params)
+
+    params =
+      params
+      |> Map.take(~w(query status sort_by))
+      |> Map.reject(fn {_, v} -> v in ["", nil] end)
+
+    socket = push_patch(socket, to: ~p"/raffles?#{params}")
+    {:noreply, socket}
   end
 
   def render(assigns) do

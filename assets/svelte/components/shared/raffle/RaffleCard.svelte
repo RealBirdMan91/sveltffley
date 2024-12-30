@@ -9,7 +9,7 @@
 </script>
 
 <Card.Root>
-    <Card.Header>
+    <Card.Header class="flex flex-col items-center space-y-2">
         <div>
             <img
                 class="h-[250px] aspect-square"
@@ -20,9 +20,6 @@
         <Card.Title class="text-neutral-700">{raffle.prize}</Card.Title>
     </Card.Header>
     <Card.Content class="space-y-2">
-        <div>
-            <p class="text-neutral-500">{raffle.description}</p>
-        </div>
         <div class="flex justify-between items-center">
             <p class="text-neutral-700 font-medium">
                 Price: {raffle.ticket_price}
