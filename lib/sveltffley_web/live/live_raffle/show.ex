@@ -1,7 +1,7 @@
 defmodule SveltffleyWeb.LiveRaffle.Show do
   use SveltffleyWeb, :live_view
   use LiveSvelte.Components
-
+  require Logger
   alias Sveltffley.Raffles
 
   def mount(_params, _session, socket) do
@@ -15,14 +15,26 @@ defmodule SveltffleyWeb.LiveRaffle.Show do
       socket
       |> assign(:raffle, raffle)
       |> assign(:page_title, raffle.prize)
-      |> assign(:featured_raffles, Raffles.featured_raffles(raffle))
+      |> assign_async(:featured_raffles, fn ->
+        {:ok, %{featured_raffles: Raffles.featured_raffles(raffle)}}
+      end)
 
     {:noreply, socket}
   end
 
   def render(assigns) do
     ~H"""
-    <.SingleRaffle socket={@socket} raffle={@raffle} featured_raffles={@featured_raffles} />
+    <.SingleRaffle
+      socket={@socket}
+      raffle={@raffle}
+      featured_raffles={
+        %{
+          loading: @featured_raffles.loading,
+          failed: @featured_raffles.failed,
+          result: @featured_raffles.result
+        }
+      }
+    />
     """
   end
 end

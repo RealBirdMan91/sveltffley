@@ -8,8 +8,6 @@ defmodule Sveltffley.Raffles do
   end
 
   def filter_raffles(filter) do
-    IO.inspect(filter)
-
     Raffle
     |> withStatus(filter["status"])
     |> search_by(filter["query"])
@@ -50,6 +48,8 @@ defmodule Sveltffley.Raffles do
   end
 
   def featured_raffles(raffle) do
+    Process.sleep(5000)
+
     Raffle
     |> where(status: :open)
     |> where([r], r.id != ^raffle.id)

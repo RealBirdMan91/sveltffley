@@ -10,13 +10,13 @@ defmodule SveltffleyWeb.LiveRaffle.Index do
 
   def handle_params(params, _uri, socket) do
     IO.inspect(params)
-    socket = assign(socket, :raffles, Raffles.filter_raffles(params))
+    IO.inspect(socket)
+    socket = socket |> assign(:raffles, Raffles.filter_raffles(params)) |> assign(:params, params)
+
     {:noreply, socket}
   end
 
   def handle_event("filter", params, socket) do
-    IO.inspect(params)
-
     params =
       params
       |> Map.take(~w(query status sort_by))
@@ -28,7 +28,17 @@ defmodule SveltffleyWeb.LiveRaffle.Index do
 
   def render(assigns) do
     ~H"""
-    <.RafflesList socket={@socket} raffles={@raffles} />
+    <.RafflesList
+      socket={@socket}
+      raffles={@raffles}
+      params={
+        %{
+          query: @params["query"] || "",
+          status: @params["status"] || "",
+          sort_by: @params["sort_by"] || ""
+        }
+      }
+    />
     """
   end
 end
